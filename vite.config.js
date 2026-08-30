@@ -11,10 +11,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Enable JSON imports with named exports
+  // Enable JSON imports with stringify for massive performance gain on huge JSON
   json: {
-    namedExports: true,
-    stringify: false
+    namedExports: false,
+    stringify: true
   },
 
   // Dev server settings
