@@ -1,1 +1,4 @@
 *.pdf filter=lfs diff=lfs merge=lfs -text
+node_modules/** filter=lfs diff=lfs merge=lfs -text
+math.pdf filter=lfs diff=lfs merge=lfs -text
+sat[[:space:]]questions.pdf filter=lfs diff=lfs merge=lfs -text
