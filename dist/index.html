@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>SAT Practice Test — Bluebook Simulator</title>
+  <meta name="description" content="Practice SAT tests with a Bluebook-accurate simulator. Official College Board questions with timed modules, adaptive difficulty, and detailed score reports." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+
+  <!-- Google Fonts: Open Sans (Bluebook-style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX CSS for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+  <!-- Main App Styles -->
+  <script type="module" crossorigin src="/assets/index-CKv-qCrn.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-o324a2Vw.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ========================================== -->
+    <!-- VIEW: Landing Page — Module Selection      -->
+    <!-- ========================================== -->
+    <div id="landing-view" class="view active">
+      <div class="landing-container">
+        <!-- Logo & Header -->
+        <div class="landing-header">
+          <div class="cb-logo-mark">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="12" fill="#005696"/>
+              <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="'Open Sans', sans-serif" font-weight="800" font-size="22">SAT</text>
+            </svg>
+          </div>
+          <h1 class="landing-title">Practice Test</h1>
+          <p class="landing-subtitle">Select the modules you'd like to practice, or take a full test.</p>
+        </div>
+
+        <!-- Module Selection -->
+        <div class="module-selection" id="module-selection">
+
+          <!-- Full Practice Test -->
+          <div class="module-group">
+            <label class="module-card full-test-card" data-module="full" id="module-full">
+              <input type="checkbox" name="module" value="full" class="module-checkbox" />
+              <div class="module-card-inner">
+                <div class="module-card-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div class="module-card-text">
+                  <h3>Full Practice Test</h3>
+                  <p>All 4 modules • 98 questions • ~2 hrs 24 min</p>
+                  <span class="module-detail">Includes R&W (Modules 1 & 2) + Math (Modules 1 & 2) with a 10-minute break</span>
+                </div>
+                <div class="module-card-check">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div class="divider-or">
+            <span>or choose individual modules</span>
+          </div>
+
+          <!-- R&W Modules -->
+          <div class="module-group">
+            <h2 class="module-group-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Reading & Writing
+            </h2>
+            <div class="module-cards-row">
+              <label class="module-card" data-module="rw-1" id="module-rw-1">
+                <input type="checkbox" name="module" value="rw-1" class="module-checkbox" />
+                <div class="module-card-inner">
+                  <div class="module-card-icon">
+                    <span class="module-num">1</span>
+                  </div>
+                  <div class="module-card-text">
+                    <h3>Module 1</h3>
+                    <p>27 questions • 32 min</p>
+                  </div>
+                  <div class="module-card-check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+              </label>
+              <label class="module-card" data-module="rw-2" id="module-rw-2">
+                <input type="checkbox" name="module" value="rw-2" class="module-checkbox" />
+                <div class="module-card-inner">
+                  <div class="module-card-icon">
+                    <span class="module-num">2</span>
+                  </div>
+                  <div class="module-card-text">
+                    <h3>Module 2</h3>
+                    <p>27 questions • 32 min</p>
+                  </div>
+                  <div class="module-card-check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Math Modules -->
+          <div class="module-group">
+            <h2 class="module-group-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+              Math
+            </h2>
+            <div class="module-cards-row">
+              <label class="module-card" data-module="math-1" id="module-math-1">
+                <input type="checkbox" name="module" value="math-1" class="module-checkbox" />
+                <div class="module-card-inner">
+                  <div class="module-card-icon">
+                    <span class="module-num">1</span>
+                  </div>
+                  <div class="module-card-text">
+                    <h3>Module 1</h3>
+                    <p>22 questions • 35 min</p>
+                  </div>
+                  <div class="module-card-check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+              </label>
+              <label class="module-card" data-module="math-2" id="module-math-2">
+                <input type="checkbox" name="module" value="math-2" class="module-checkbox" />
+                <div class="module-card-inner">
+                  <div class="module-card-icon">
+                    <span class="module-num">2</span>
+                  </div>
+                  <div class="module-card-text">
+                    <h3>Module 2</h3>
+                    <p>22 questions • 35 min</p>
+                  </div>
+                  <div class="module-card-check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Button -->
+        <div class="landing-footer">
+          <button id="start-test-btn" class="btn-start" disabled>
+            Begin Test
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: Test — Active Test Interface          -->
+    <!-- ========================================== -->
+    <div id="test-view" class="view">
+      <!-- Top Header Bar (Bluebook Blue) -->
+      <header id="test-header" class="test-header">
+        <div class="header-section header-left">
+          <button id="exit-test-btn" class="header-text-btn" title="Exit test">
+            ✕
+          </button>
+          <span id="section-label" class="section-label">Section 1, Module 1: Reading and Writing</span>
+        </div>
+        <div class="header-section header-center">
+          <div id="timer-container" class="timer-container">
+            <svg class="timer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="timer-display" class="timer-display">32:00</span>
+          </div>
+          <button id="timer-toggle" class="timer-toggle-btn">Hide</button>
+        </div>
+        <div class="header-section header-right">
+          <button id="reference-btn" class="toolbar-btn" title="Reference Sheet" style="display:none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="toolbar-label">Reference</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Test Body -->
+      <div id="test-body" class="test-body">
+        <!-- Passage/Stimulus Panel (left side for R&W) -->
+        <div id="passage-panel" class="passage-panel">
+          <div id="passage-content" class="passage-content">
+            <!-- Passage HTML rendered here -->
+          </div>
+        </div>
+
+        <!-- Panel Divider -->
+        <div id="panel-divider" class="panel-divider"></div>
+
+        <!-- Question Panel (right side or full width for Math) -->
+        <div id="question-panel" class="question-panel">
+          <!-- Question header: number badge + mark for review -->
+          <div class="question-top-row">
+            <span id="question-number-badge" class="question-number-badge">1</span>
+            <label id="mark-review-label" class="mark-review-label">
+              <input type="checkbox" id="mark-review-cb" class="mark-review-cb" />
+              <svg class="bookmark-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <span class="mark-review-text">Mark for Review</span>
+            </label>
+          </div>
+
+          <!-- Question Text -->
+          <div id="question-text" class="question-text">
+            <!-- Question HTML rendered here -->
+          </div>
+
+          <!-- MCQ Answer Choices -->
+          <div id="choices-container" class="choices-container">
+            <!-- Dynamically populated A/B/C/D choice cards -->
+          </div>
+
+          <!-- SPR (Student Produced Response) Input -->
+          <div id="spr-container" class="spr-container" style="display:none;">
+            <label for="spr-input" class="spr-label">Your answer:</label>
+            <input type="text" id="spr-input" class="spr-input" autocomplete="off" inputmode="text" />
+            <p class="spr-hint">Enter a number, fraction (e.g., 3/17), or decimal.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Footer Bar -->
+      <footer id="test-footer" class="test-footer">
+        <div class="footer-section footer-left">
+          <!-- Spacer -->
+        </div>
+        <div class="footer-section footer-center">
+          <button id="question-nav-pill" class="question-nav-pill" title="Open question navigator">
+            Question <span id="current-q-num">1</span> of <span id="total-q-num">27</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+        </div>
+        <div class="footer-section footer-right">
+          <button id="back-btn" class="nav-btn btn-back" disabled>
+            Back
+          </button>
+          <button id="next-btn" class="nav-btn btn-next">
+            Next
+          </button>
+        </div>
+      </footer>
+
+      <!-- Question Grid Popup (expands from nav pill) -->
+      <div id="question-grid-popup" class="question-grid-popup" style="display:none;">
+        <div class="grid-popup-header">
+          <span class="grid-popup-title" id="grid-popup-title">Section 1, Module 1: Reading and Writing</span>
+          <button id="close-grid-btn" class="close-grid-btn" title="Close navigator">✕</button>
+        </div>
+        <div id="question-grid" class="question-grid">
+          <!-- Numbered question squares dynamically populated -->
+        </div>
+        <div class="grid-legend">
+          <span class="legend-item"><span class="legend-swatch answered"></span> Answered</span>
+          <span class="legend-item"><span class="legend-swatch unanswered"></span> Unanswered</span>
+          <span class="legend-item"><span class="legend-swatch flagged"></span> For Review</span>
+          <span class="legend-item"><span class="legend-swatch current-q"></span> Current</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: Module Review — Check Your Work      -->
+    <!-- ========================================== -->
+    <div id="module-review-view" class="view">
+      <div class="module-review-container">
+        <h1 class="review-heading">Check Your Work</h1>
+        <p class="review-section-label" id="review-section-label">Section 1, Module 1: Reading and Writing</p>
+        <p class="review-instructions">The following is a list of questions in this module. Select a question number to return to it. When you are ready, click <strong>Submit</strong> to finish this module.</p>
+
+        <div id="review-question-grid" class="review-question-grid">
+          <!-- Dynamically populated question squares -->
+        </div>
+
+        <div class="review-stats">
+          <div class="review-stat">
+            <span class="review-stat-icon answered-icon">●</span>
+            <span id="review-answered-count">0</span> Answered
+          </div>
+          <div class="review-stat">
+            <span class="review-stat-icon unanswered-icon">○</span>
+            <span id="review-unanswered-count">0</span> Unanswered
+          </div>
+          <div class="review-stat">
+            <span class="review-stat-icon flagged-icon">⚑</span>
+            <span id="review-flagged-count">0</span> For Review
+          </div>
+        </div>
+
+        <div class="review-actions">
+          <button id="review-back-btn" class="nav-btn btn-back">Back</button>
+          <button id="review-submit-btn" class="nav-btn btn-next btn-submit">Submit Module</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: Break — 10 Minute Break Screen       -->
+    <!-- ========================================== -->
+    <div id="break-view" class="view">
+      <div class="break-container">
+        <div class="break-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#005696" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        </div>
+        <h1 class="break-title">Take a Break</h1>
+        <p class="break-description">You've completed the Reading and Writing section. You have a 10-minute break before starting the Math section.</p>
+        <div id="break-timer-display" class="break-timer-display">10:00</div>
+        <p class="break-note">The Math section will begin automatically when the break ends, or you can start early.</p>
+        <button id="resume-test-btn" class="btn-start">Resume Testing</button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW: Results — Score Report & Review      -->
+    <!-- ========================================== -->
+    <div id="results-view" class="view">
+      <div class="results-container">
+        <!-- Results Header -->
+        <div class="results-header">
+          <div class="results-header-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#005696" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h1 class="results-title">Test Complete</h1>
+          <p class="results-subtitle">Here's how you did</p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div id="results-summary" class="results-summary">
+          <div class="summary-card summary-correct">
+            <div class="summary-value" id="result-correct-count">0</div>
+            <div class="summary-label">Correct</div>
+          </div>
+          <div class="summary-card summary-incorrect">
+            <div class="summary-value" id="result-incorrect-count">0</div>
+            <div class="summary-label">Incorrect</div>
+          </div>
+          <div class="summary-card summary-omitted">
+            <div class="summary-value" id="result-omitted-count">0</div>
+            <div class="summary-label">Omitted</div>
+          </div>
+          <div class="summary-card summary-total">
+            <div class="summary-value" id="result-total-pct">0%</div>
+            <div class="summary-label">Score</div>
+          </div>
+        </div>
+
+        <!-- Per-Module Score Breakdown -->
+        <div id="module-scores" class="module-scores">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="results-filter-bar" id="results-filter-bar">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="correct">Correct</button>
+          <button class="filter-tab" data-filter="incorrect">Incorrect</button>
+          <button class="filter-tab" data-filter="omitted">Omitted</button>
+        </div>
+
+        <!-- Question Review Table -->
+        <div class="results-table-wrapper">
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Module</th>
+                <th>Result</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+                <th>Difficulty</th>
+                <th>Skill / Domain</th>
+              </tr>
+            </thead>
+            <tbody id="results-table-body">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- New Test Button -->
+        <div class="results-footer">
+          <button id="new-test-btn" class="btn-start">Start New Test</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: Question Detail (Results Review)    -->
+    <!-- ========================================== -->
+    <div id="question-detail-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <h2 id="detail-modal-title" class="modal-title">Question 1</h2>
+          <button id="close-detail-modal" class="modal-close-btn" title="Close">✕</button>
+        </div>
+        <div class="modal-body" id="detail-modal-body">
+          <!-- Meta badges -->
+          <div id="detail-meta" class="detail-meta"></div>
+
+          <!-- Two-column: passage + question -->
+          <div class="detail-content-layout">
+            <div id="detail-passage" class="detail-passage"></div>
+            <div class="detail-question-area">
+              <div id="detail-question-text" class="detail-question-text"></div>
+              <div id="detail-choices" class="detail-choices"></div>
+              <div id="detail-spr-answer" class="detail-spr-answer" style="display:none;"></div>
+            </div>
+          </div>
+
+          <!-- Explanation -->
+          <div class="detail-explanation-wrapper">
+            <h3 class="detail-explanation-title">Explanation</h3>
+            <div id="detail-explanation" class="detail-explanation"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: 5-Minute Warning                    -->
+    <!-- ========================================== -->
+    <div id="five-min-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-body modal-center">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <h2 class="modal-heading">5 Minutes Remaining</h2>
+          <p>You have 5 minutes left in this module.</p>
+          <button id="dismiss-five-min" class="btn-start">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: Time's Up                           -->
+    <!-- ========================================== -->
+    <div id="timesup-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-body modal-center">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h2 class="modal-heading">Time's Up</h2>
+          <p>This module has been automatically submitted.</p>
+          <button id="dismiss-timesup" class="btn-start">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: Exit Confirmation                   -->
+    <!-- ========================================== -->
+    <div id="exit-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-body modal-center">
+          <h2 class="modal-heading">Exit Test?</h2>
+          <p>Are you sure you want to exit? Your progress on this test will be lost.</p>
+          <div class="modal-btn-row">
+            <button id="cancel-exit" class="nav-btn btn-back">Cancel</button>
+            <button id="confirm-exit" class="nav-btn btn-next">Exit Test</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: Submit Module Confirmation           -->
+    <!-- ========================================== -->
+    <div id="submit-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-body modal-center">
+          <h2 class="modal-heading">Submit Module?</h2>
+          <p id="submit-modal-text">Once submitted, you cannot return to this module.</p>
+          <div class="modal-btn-row">
+            <button id="cancel-submit" class="nav-btn btn-back">Go Back</button>
+            <button id="confirm-submit" class="nav-btn btn-next">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: Math Reference Sheet                -->
+    <!-- ========================================== -->
+    <div id="reference-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-dialog modal-reference">
+        <div class="modal-header">
+          <h2 class="modal-title">Reference Sheet</h2>
+          <button id="close-reference-modal" class="modal-close-btn" title="Close">✕</button>
+        </div>
+        <div class="modal-body" id="reference-body">
+          <!-- Populated by reference.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- Toast Notification Container               -->
+    <!-- ========================================== -->
+    <div id="toast-container" class="toast-container"></div>
+
+  </div>
+
+  <!-- Main App Script (Vite entry point) -->
+</body>
+</html>
