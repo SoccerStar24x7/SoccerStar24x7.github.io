@@ -1,0 +1,82 @@
+{
+  "rw": {
+    "label": "Reading & Writing",
+    "domains": [
+      {
+        "name": "Information and Ideas",
+        "skills": [
+          "Inferences",
+          "Central Ideas and Details",
+          "Command of Evidence"
+        ]
+      },
+      {
+        "name": "Craft and Structure",
+        "skills": [
+          "Words in Context",
+          "Text Structure and Purpose",
+          "Cross-Text Connections",
+          "Cross-text Connections"
+        ]
+      },
+      {
+        "name": "Expression of Ideas",
+        "skills": [
+          "Rhetorical Synthesis",
+          "Transitions"
+        ]
+      },
+      {
+        "name": "Standard English Conventions",
+        "skills": [
+          "Boundaries",
+          "Form, Structure, and Sense"
+        ]
+      }
+    ]
+  },
+  "math": {
+    "label": "Math",
+    "domains": [
+      {
+        "name": "Algebra",
+        "skills": [
+          "Linear equations in two variables",
+          "Linear inequalities in one or two variables",
+          "Systems of two linear equations in two variables",
+          "Linear functions",
+          "Linear equations in one variable"
+        ]
+      },
+      {
+        "name": "Advanced Math",
+        "skills": [
+          "Nonlinear functions",
+          "Equivalent expressions",
+          "Nonlinear equations in one variable and systems of equations in two variables "
+        ]
+      },
+      {
+        "name": "Problem-Solving and Data Analysis",
+        "skills": [
+          "Inference from sample statistics and margin of error ",
+          "Ratios, rates, proportional relationships, and units",
+          "Probability and conditional probability",
+          "Percentages",
+          "Two-variable data: Models and scatterplots",
+          "One-variable data: Distributions and measures of center and spread",
+          "Evaluating statistical claims: Observational studies and experiments "
+        ]
+      },
+      {
+        "name": "Geometry and Trigonometry",
+        "skills": [
+          "Lines, angles, and triangles",
+          "Right triangles and trigonometry",
+          "Area and volume",
+          "Circles"
+        ]
+      }
+    ]
+  }
+}
