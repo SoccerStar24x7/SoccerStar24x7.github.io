@@ -177,6 +177,9 @@ class App {
 
   launchModule(moduleKey) {
     let difficulty = 'standard';
+    if (moduleKey.endsWith('-2')) {
+      difficulty = 'hard';
+    }
     
     // Adaptive logic for Module 2
     if (moduleKey === 'rw-2' && this.moduleQueue.includes('rw-1')) {

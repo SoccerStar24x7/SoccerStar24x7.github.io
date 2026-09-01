@@ -15,11 +15,11 @@ export class ModuleConfig {
   getDifficultyDistribution(moduleKey, difficulty) {
     const isMath = moduleKey.startsWith('math');
     if (isMath) {
-      if (difficulty === 'hard') return { easy: 3, medium: 8, hard: 11 };
+      if (difficulty === 'hard') return { easy: 0, medium: 8, hard: 14 };
       if (difficulty === 'easy') return { easy: 10, medium: 9, hard: 3 };
       return { easy: 7, medium: 11, hard: 4 }; // standard
     } else {
-      if (difficulty === 'hard') return { easy: 4, medium: 10, hard: 13 };
+      if (difficulty === 'hard') return { easy: 1, medium: 9, hard: 17 };
       if (difficulty === 'easy') return { easy: 12, medium: 11, hard: 4 };
       return { easy: 8, medium: 13, hard: 6 }; // standard
     }
