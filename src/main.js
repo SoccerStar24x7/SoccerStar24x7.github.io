@@ -142,6 +142,9 @@ class App {
     this.moduleQueue = [];
     this.currentModuleIndex = -1;
     
+    const activeCb = document.getElementById('active-questions-cb');
+    this.activeOnly = activeCb ? activeCb.checked : false;
+    
     if (this.isFullTest) {
       this.moduleQueue = ['rw-1', 'rw-2', 'BREAK', 'math-1', 'math-2'];
     } else {
@@ -198,7 +201,8 @@ class App {
 
     const config = this.moduleConfig.assembleModule(moduleKey, {
       difficulty,
-      excludeIds: this.usedQuestionIds
+      excludeIds: this.usedQuestionIds,
+      activeOnly: this.activeOnly
     });
     
     config.questions.forEach(q => this.usedQuestionIds.add(q.id));

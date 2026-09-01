@@ -36,7 +36,7 @@ export class ModuleConfig {
   }
 
   assembleModule(moduleKey, options = {}) {
-    const { difficulty = 'standard', excludeIds = new Set() } = options;
+    const { difficulty = 'standard', excludeIds = new Set(), activeOnly = false } = options;
     const info = this.getModuleInfo(moduleKey);
     const isMath = info.section === 'math';
     
@@ -45,6 +45,12 @@ export class ModuleConfig {
     
     // 2. Exclude IDs
     available = available.filter(q => !excludeIds.has(q.id));
+    
+    // 2.5 Filter active only
+    if (activeOnly) {
+      available = available.filter(q => q.active);
+    }
+    
     
     // 3. Group by difficulty
     const byDifficulty = { easy: [], medium: [], hard: [] };
