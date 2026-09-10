@@ -35,6 +35,36 @@ export class ModuleConfig {
     return info[moduleKey];
   }
 
+  getReplacementQuestion(currentQ, excludeIds = new Set(), activeOnly = false) {
+    let available = this.allQuestions.filter(q => 
+      q.section === currentQ.section && 
+      q.domain === currentQ.domain && 
+      q.skill === currentQ.skill && 
+      q.difficulty === currentQ.difficulty && 
+      !excludeIds.has(q.id)
+    );
+    
+    if (activeOnly) {
+      available = available.filter(q => q.active);
+    }
+    
+    // If strict match fails, loosen domain/skill
+    if (available.length === 0) {
+      available = this.allQuestions.filter(q => 
+        q.section === currentQ.section && 
+        q.difficulty === currentQ.difficulty && 
+        !excludeIds.has(q.id)
+      );
+      if (activeOnly) available = available.filter(q => q.active);
+    }
+    
+    if (available.length > 0) {
+      const idx = Math.floor(Math.random() * available.length);
+      return available[idx];
+    }
+    return null;
+  }
+
   assembleModule(moduleKey, options = {}) {
     const { difficulty = 'standard', excludeIds = new Set(), activeOnly = false } = options;
     const info = this.getModuleInfo(moduleKey);

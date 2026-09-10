@@ -218,7 +218,14 @@ class App {
     
     this.testEngine = new TestEngine(config, {
       onRequestReview: (data) => this.showReview(data),
-      onModuleComplete: (results) => this.handleModuleComplete(results)
+      onModuleComplete: (results) => this.handleModuleComplete(results),
+      onRequestReplace: (currentQ) => {
+        const newQ = this.moduleConfig.getReplacementQuestion(currentQ, this.usedQuestionIds, this.activeOnly);
+        if (newQ) {
+          this.usedQuestionIds.add(newQ.id);
+        }
+        return newQ;
+      }
     });
     
     this.testEngine.startModule();

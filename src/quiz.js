@@ -40,7 +40,8 @@ export default class TestEngine {
       timesupModal: document.getElementById('timesup-modal'),
       dismissTimesup: document.getElementById('dismiss-timesup'),
       sectionLabel: document.getElementById('section-label'),
-      referenceBtn: document.getElementById('reference-btn')
+      referenceBtn: document.getElementById('reference-btn'),
+      replaceBtn: document.getElementById('replace-question-btn')
     };
 
     // Bind event handlers
@@ -53,6 +54,7 @@ export default class TestEngine {
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.toggleTimer = this.toggleTimer.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleReplaceQuestion = this.handleReplaceQuestion.bind(this);
     
     this.handleDismissFiveMin = this.handleDismissFiveMin.bind(this);
     this.handleDismissTimesup = this.handleDismissTimesup.bind(this);
@@ -99,6 +101,7 @@ export default class TestEngine {
     
     this.elements.qNavPill.addEventListener('click', this.toggleGridPopup);
     this.elements.closeGridBtn.addEventListener('click', this.closeGridPopup);
+    this.elements.replaceBtn.addEventListener('click', this.handleReplaceQuestion);
     document.addEventListener('click', this.handleOutsideClick);
     
     this.elements.timerToggle.addEventListener('click', this.toggleTimer);
@@ -116,6 +119,7 @@ export default class TestEngine {
     
     this.elements.qNavPill.removeEventListener('click', this.toggleGridPopup);
     this.elements.closeGridBtn.removeEventListener('click', this.closeGridPopup);
+    this.elements.replaceBtn.removeEventListener('click', this.handleReplaceQuestion);
     document.removeEventListener('click', this.handleOutsideClick);
     
     this.elements.timerToggle.removeEventListener('click', this.toggleTimer);
@@ -470,6 +474,22 @@ export default class TestEngine {
     } else {
       this.elements.timerDisplay.style.visibility = 'hidden';
       this.elements.timerToggle.textContent = 'Show';
+    }
+  }
+
+  handleReplaceQuestion() {
+    if (this.isReviewing || !this.callbacks.onRequestReplace) return;
+    const currentQ = this.questions[this.currentIndex];
+    const newQ = this.callbacks.onRequestReplace(currentQ);
+    if (newQ) {
+      this.questions[this.currentIndex] = newQ;
+      delete this.answers[currentQ.id];
+      this.flagged.delete(currentQ.id);
+      delete this.eliminatedAnswers[currentQ.id];
+      this.renderQuestion(this.currentIndex);
+      this.renderGrid();
+    } else {
+      alert("No suitable replacement question found in the bank.");
     }
   }
 
