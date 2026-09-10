@@ -34,6 +34,7 @@ export default class TestEngine {
       closeGridBtn: document.getElementById('close-grid-btn'),
       timerDisplay: document.getElementById('timer-display'),
       timerToggle: document.getElementById('timer-toggle'),
+      timerPause: document.getElementById('timer-pause'),
       timerContainer: document.getElementById('timer-container'),
       fiveMinModal: document.getElementById('five-min-modal'),
       dismissFiveMin: document.getElementById('dismiss-five-min'),
@@ -53,6 +54,7 @@ export default class TestEngine {
     this.closeGridPopup = this.closeGridPopup.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.toggleTimer = this.toggleTimer.bind(this);
+    this.toggleTimerPause = this.toggleTimerPause.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleReplaceQuestion = this.handleReplaceQuestion.bind(this);
     
@@ -76,6 +78,7 @@ export default class TestEngine {
     this.secondsRemaining = this.timeMinutes * 60;
     this.fiveMinuteWarningShown = false;
     this.isReviewing = false;
+    this.isTimerPaused = false;
 
     // UI Setup
     this.elements.sectionLabel.textContent = this.label;
@@ -87,6 +90,8 @@ export default class TestEngine {
     this.elements.timerDisplay.style.visibility = 'visible';
     this.elements.timerContainer.classList.remove('timer-warning');
     this.elements.timerToggle.disabled = false;
+    this.elements.timerPause.textContent = 'Pause';
+    this.elements.timerPause.disabled = false;
 
     this.attachListeners();
     this.startTimer();
@@ -105,6 +110,7 @@ export default class TestEngine {
     document.addEventListener('click', this.handleOutsideClick);
     
     this.elements.timerToggle.addEventListener('click', this.toggleTimer);
+    this.elements.timerPause.addEventListener('click', this.toggleTimerPause);
     document.addEventListener('keydown', this.handleKeyDown);
 
     this.elements.dismissFiveMin.addEventListener('click', this.handleDismissFiveMin);
@@ -123,6 +129,7 @@ export default class TestEngine {
     document.removeEventListener('click', this.handleOutsideClick);
     
     this.elements.timerToggle.removeEventListener('click', this.toggleTimer);
+    this.elements.timerPause.removeEventListener('click', this.toggleTimerPause);
     document.removeEventListener('keydown', this.handleKeyDown);
 
     this.elements.dismissFiveMin.removeEventListener('click', this.handleDismissFiveMin);
@@ -433,6 +440,8 @@ export default class TestEngine {
   startTimer() {
     this.updateTimerDisplay();
     this.timerInterval = setInterval(() => {
+      if (this.isTimerPaused) return;
+      
       this.secondsRemaining--;
       if (this.secondsRemaining <= 0) {
         this.secondsRemaining = 0;
@@ -462,6 +471,20 @@ export default class TestEngine {
     const mins = Math.floor(this.secondsRemaining / 60);
     const secs = this.secondsRemaining % 60;
     this.elements.timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  toggleTimerPause() {
+    if (this.fiveMinuteWarningShown && this.elements.fiveMinModal.style.display === 'flex') return;
+    
+    this.isTimerPaused = !this.isTimerPaused;
+    
+    if (this.isTimerPaused) {
+      this.elements.timerPause.textContent = 'Resume';
+      this.elements.timerPause.classList.add('paused');
+    } else {
+      this.elements.timerPause.textContent = 'Pause';
+      this.elements.timerPause.classList.remove('paused');
+    }
   }
 
   toggleTimer() {
